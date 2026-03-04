@@ -77,7 +77,6 @@
             object-fit: contain;
         }
 
-        /* Dodatno za navigacione strelica */
         .nav-arrow {
             transition: all 0.2s ease;
         }
@@ -90,6 +89,24 @@
             .nav-arrow {
                 font-size: 3.5rem !important;
             }
+        }
+
+        #loadMoreBtn {
+            transition: all 0.3s ease;
+        }
+
+        #loadMoreBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+
+        #loadMoreBtn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        #loadMoreBtn.loading {
+            cursor: wait;
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -204,7 +221,7 @@
                     <div class="video-badge"><i data-lucide="play" class="w-6 h-6"></i></div>
                 </div>
 
-                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]"
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3] hidden"
                     data-category="bodywork">
                     <video class="w-full h-full object-cover" muted loop playsinline>
                         <source src="2.mp4#t=0.5" type="video/mp4">
@@ -215,7 +232,7 @@
                     <div class="video-badge"><i data-lucide="play" class="w-6 h-6"></i></div>
                 </div>
 
-                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]"
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3] hidden"
                     data-category="bodywork">
                     <video class="w-full h-full object-cover" muted loop playsinline>
                         <source src="3.mp4#t=0.5" type="video/mp4">
@@ -226,7 +243,7 @@
                     <div class="video-badge"><i data-lucide="play" class="w-6 h-6"></i></div>
                 </div>
 
-                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]"
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3] hidden"
                     data-category="bodywork">
                     <video class="w-full h-full object-cover" muted loop playsinline>
                         <source src="4.mp4#t=0.5" type="video/mp4">
@@ -237,7 +254,7 @@
                     <div class="video-badge"><i data-lucide="play" class="w-6 h-6"></i></div>
                 </div>
 
-                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]"
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3] hidden"
                     data-category="bodywork">
                     <video class="w-full h-full object-cover" muted loop playsinline>
                         <source src="5.mp4#t=0.5" type="video/mp4">
@@ -248,7 +265,7 @@
                     <div class="video-badge"><i data-lucide="play" class="w-6 h-6"></i></div>
                 </div>
 
-                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]"
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3] hidden"
                     data-category="bodywork">
                     <video class="w-full h-full object-cover" muted loop playsinline>
                         <source src="6.mp4#t=0.5" type="video/mp4">
@@ -261,10 +278,12 @@
 
             </div>
 
+            <!-- Lepše dugme za učitavanje -->
             <div class="text-center mt-12">
-                <button
-                    class="px-8 py-3 border-2 border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white rounded-full font-semibold transition-all">
-                    Učitaj Još Radova
+                <button id="loadMoreBtn"
+                    class="px-10 py-4 bg-gradient-to-r from-blue-600/10 to-blue-700/10 hover:from-blue-600 hover:to-blue-700 border-2 border-blue-600/50 hover:border-blue-400 text-blue-300 hover:text-white font-semibold rounded-full text-lg transition-all duration-300 shadow-lg shadow-blue-900/30 hover:shadow-blue-600/50 active:scale-95 flex items-center gap-3 mx-auto">
+                    <span id="loadMoreText">Učitaj Još Radova</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 transition-transform group-hover:rotate-180"></i>
                 </button>
             </div>
         </div>
@@ -308,7 +327,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-slate-950 border-t border-gray-800 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-8 mb-12">
@@ -370,7 +388,6 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Float Button -->
     <a href="https://wa.me/381628388856"
         class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-transform hover:scale-110 z-50 flex items-center justify-center"
         title="Kontaktirajte nas putem WhatsApp">
@@ -383,7 +400,6 @@
     <script>
         lucide.createIcons();
 
-        // Mobile menu
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         let isMenuOpen = false;
@@ -407,9 +423,6 @@
             }
         });
 
-        // ────────────────────────────────────────────────
-        //          LIGHTBOX SA NAVIGACIJOM
-        // ────────────────────────────────────────────────
 
         let currentIndex = 0;
         const galleryItems = document.querySelectorAll('#gallery-grid .gallery-item');
@@ -442,10 +455,6 @@
                     lbVid.load();
                     lbVid.play().catch(() => { });
 
-                    // if (lbVid.requestFullscreen && /Mobi|Android/i.test(navigator.userAgent)) {
-                    //     lbVid.requestFullscreen().catch(() => {});
-                    // }
-
                     lbVid.classList.remove('hidden');
                 }
             }
@@ -453,7 +462,6 @@
             lb.classList.add('active');
             document.body.style.overflow = 'hidden';
 
-            // Ažuriraj vidljivost strelica
             document.getElementById('lightbox-prev').style.opacity = index === 0 ? '0.3' : '0.8';
             document.getElementById('lightbox-next').style.opacity = index === galleryItems.length - 1 ? '0.3' : '0.8';
         }
@@ -476,14 +484,12 @@
             }
         }
 
-        // Klik na pozadinu zatvara
         document.getElementById('lightbox').addEventListener('click', e => {
             if (e.target === document.getElementById('lightbox')) {
                 closeLightbox();
             }
         });
 
-        // Escape zatvara
         document.addEventListener('keydown', e => {
             if (!document.getElementById('lightbox').classList.contains('active')) return;
 
@@ -496,7 +502,6 @@
             }
         });
 
-        // Strelica levo / desno
         document.getElementById('lightbox-prev')?.addEventListener('click', () => {
             showItem(currentIndex - 1);
         });
@@ -505,7 +510,6 @@
             showItem(currentIndex + 1);
         });
 
-        // Swipe podrška na telefonu
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -517,24 +521,20 @@
             touchEndX = e.changedTouches[0].screenX;
             const diff = touchStartX - touchEndX;
 
-            if (Math.abs(diff) > 60) { // prag za swipe
+            if (Math.abs(diff) > 60) {
                 if (diff > 0) {
-                    // swipe levo → sledeći
                     showItem(currentIndex + 1);
                 } else {
-                    // swipe desno → prethodni
                     showItem(currentIndex - 1);
                 }
             }
         });
 
-        // Delegacija klikova na galerijske stavke
         document.getElementById('gallery-grid').addEventListener('click', e => {
             const item = e.target.closest('.gallery-item');
             if (item) openLightbox(item);
         });
 
-        // GSAP animacija ulaska
         gsap.registerPlugin(ScrollTrigger);
         gsap.fromTo('.gallery-item',
             { opacity: 0, y: 30 },
@@ -547,6 +547,56 @@
                 ease: 'power2.out'
             }
         );
+
+
+
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const loadMoreText = document.getElementById('loadMoreText');
+        const itemsPerLoad = 3;
+
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', () => {
+                loadMoreBtn.classList.add('loading');
+                if (loadMoreText) loadMoreText.textContent = 'Učitava se...';
+
+            
+                setTimeout(() => {
+                    const hiddenItems = document.querySelectorAll('#gallery-grid .gallery-item.hidden');
+
+                    for (let i = 0; i < itemsPerLoad && i < hiddenItems.length; i++) {
+                        const item = hiddenItems[i];
+                        item.classList.remove('hidden');
+
+                        gsap.fromTo(item,
+                            { opacity: 0, y: 40, scale: 0.92 },
+                            {
+                                opacity: 1,
+                                y: 0,
+                                scale: 1,
+                                duration: 0.8,
+                                ease: 'power3.out',
+                                delay: i * 0.12
+                            }
+                        );
+                    }
+
+                    loadMoreBtn.classList.remove('loading');
+                    if (loadMoreText) loadMoreText.textContent = 'Učitaj Još Radova';
+
+                    if (document.querySelectorAll('#gallery-grid .gallery-item.hidden').length === 0) {
+                        gsap.to(loadMoreBtn, {
+                            opacity: 0,
+                            y: 20,
+                            duration: 0.5,
+                            ease: 'power2.in',
+                            onComplete: () => {
+                                loadMoreBtn.style.display = 'none';
+                            }
+                        });
+                    }
+                }, 400); 
+            });
+        }
     </script>
 </body>
 

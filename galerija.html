@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galerija radova Auto Paint Centar - Pogledajte naše završene projekte farbanja i limarskih radova">
+    <title>Galerija Radova | Auto Paint Centar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            background: rgba(17, 24, 39, 0.95);
+        }
+        .gallery-item {
+            transition: all 0.4s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+        .gallery-overlay {
+            background: linear-gradient(to top, rgba(37, 99, 235, 0.9) 0%, transparent 100%);
+        }
+        .video-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(37, 99, 235, 0.9);
+            padding: 10px;
+            border-radius: 9999px;
+            backdrop-filter: blur(4px);
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-content {
+            max-width: 92%;
+            max-height: 92%;
+            border-radius: 0.75rem;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-gray-100 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur border-b border-gray-800 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <img src="logo.png" alt="Auto Paint Centar Logo" class="h-32 w-auto object-contain rounded">
+                    <span class="font-display text-xl font-bold text-white tracking-wide">AUTO PAINT <span
+                            class="text-blue-600">CENTAR</span></span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#pocetna" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">Početna</a>
+                    <a href="index.html#onama" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">O nama</a>
+                    <a href="index.html#usluge" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">Usluge</a>
+                    <a href="galerija.html" class="text-blue-400 font-semibold text-sm uppercase tracking-wider">Galerija</a>
+                    <a href="index.html#prednosti" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">Zašto mi</a>
+                    <a href="index.html#kontakt" class="bg-blue-600 hover:bg-blue-700 px-6 py-2.5 rounded-full font-semibold text-sm transition-all transform hover:scale-105 shadow-lg shadow-blue-600/30">Kontakt</a>
+                </div>
+
+                <button class="md:hidden text-gray-300 hover:text-white" id="mobile-menu-btn">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="md:hidden hidden bg-slate-900 border-t border-gray-800" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html#pocetna" class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">Početna</a>
+                <a href="index.html#onama" class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">O nama</a>
+                <a href="index.html#usluge" class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">Usluge</a>
+                <a href="galerija.html" class="block px-3 py-2 text-blue-400 bg-gray-800/50 rounded-md font-semibold">Galerija</a>
+                <a href="index.html#prednosti" class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">Zašto mi</a>
+                <a href="index.html#kontakt" class="block px-3 py-2 text-blue-400 font-semibold">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Header -->
+    <section class="pt-32 pb-12 bg-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-400 text-sm font-semibold mb-6">
+                    <i data-lucide="camera" class="w-4 h-4"></i>
+                    Naši Radovi
+                </div>
+                <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
+                    Galerija <span class="gradient-text">Radova</span>
+                </h1>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Pogledajte naše završene projekte. Svaka fotografija i video priča priču o transformaciji i posvećenosti detaljima.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active px-6 py-2 rounded-full border border-gray-700 text-gray-300 hover:border-blue-500 transition-all" data-filter="all">
+                    Sve
+                </button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" data-category="bodywork">
+                    <img src="2a.jpg" alt="Farbanje karoserije" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 gallery-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6"></div>
+                </div>
+
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" data-category="bodywork">
+                    <img src="4a.jpg" alt="Farbanje karoserije" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 gallery-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6"></div>
+                </div>
+
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" data-category="bodywork">
+                    <video class="w-full h-full object-cover" muted loop playsinline>
+                        <source src="1.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 gallery-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <!-- <span class="text-blue-200 text-sm font-medium mb-1">Kompletno Farbanje</span> -->
+                    </div>
+                    <div class="video-badge"><i data-lucide="play" class="w-6 h-6"></i></div>
+                </div>
+
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" data-category="bodywork">
+                    <video class="w-full h-full object-cover" muted loop playsinline>
+                        <source src="2.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 gallery-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <!-- <span class="text-blue-200 text-sm font-medium mb-1">Kompletno Farbanje</span> -->
+                    </div>
+                    <div class="video-badge"><i data-lucide="play" class="w-6 h-6"></i></div>
+                </div>
+
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" data-category="bodywork">
+                    <video class="w-full h-full object-cover" muted loop playsinline>
+                        <source src="3.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 gallery-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <!-- <span class="text-blue-200 text-sm font-medium mb-1">Kompletno Farbanje</span> -->
+                    </div>
+                    <div class="video-badge"><i data-lucide="play" class="w-6 h-6"></i></div>
+                </div>
+
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" data-category="bodywork">
+                    <video class="w-full h-full object-cover" muted loop playsinline>
+                        <source src="4.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 gallery-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <!-- <span class="text-blue-200 text-sm font-medium mb-1">Kompletno Farbanje</span> -->
+                    </div>
+                    <div class="video-badge"><i data-lucide="play" class="w-6 h-6"></i></div>
+                </div>
+
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" data-category="bodywork">
+                    <video class="w-full h-full object-cover" muted loop playsinline>
+                        <source src="5.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 gallery-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <!-- <span class="text-blue-200 text-sm font-medium mb-1">Kompletno Farbanje</span> -->
+                    </div>
+                    <div class="video-badge"><i data-lucide="play" class="w-6 h-6"></i></div>
+                </div>
+
+                <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" data-category="bodywork">
+                    <video class="w-full h-full object-cover" muted loop playsinline>
+                        <source src="6.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 gallery-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <!-- <span class="text-blue-200 text-sm font-medium mb-1">Kompletno Farbanje</span> -->
+                    </div>
+                    <div class="video-badge"><i data-lucide="play" class="w-6 h-6"></i></div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="px-8 py-3 border-2 border-blue-600 text-blue-400 hover:bg-blue-600 hover:text-white rounded-full font-semibold transition-all">
+                    Učitaj Još Radova
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <button class="absolute top-5 right-5 text-white text-5xl hover:text-blue-400 z-50" onclick="closeLightbox()">
+            <i data-lucide="x"></i>
+        </button>
+        <img id="lightbox-img" class="lightbox-content hidden" alt="">
+        <video id="lightbox-video" class="lightbox-content hidden" controls autoplay></video>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-slate-950">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+                Sviđa Vam se ono što vidite?
+            </h2>
+            <p class="text-gray-400 text-lg mb-8">
+                Kontaktirajte nas i zakažite termin za Vaše vozilo.
+            </p>
+            <a href="index.html#kontakt" class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-600/40">
+                <i data-lucide="phone" class="w-5 h-5"></i>
+                Zakažite Termin
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-gray-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="font-display text-xl font-bold text-white">Zapratite nas <span class="text-blue-600 px-2 text-3xl">⬇</span></span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/profile.php?id=61588599606290&sk=reels_tab" target="_blank" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-[#1877F2] hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@jan.cerovski2?_r=1&_t=ZS-94O13DTHcAc" target="_blank" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-black hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white mb-4">Brzi Linkovi</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#onama" class="text-gray-400 hover:text-blue-400 transition-colors">O nama</a></li>
+                        <li><a href="index.html#usluge" class="text-gray-400 hover:text-blue-400 transition-colors">Usluge</a></li>
+                        <li><a href="galerija.html" class="text-gray-400 hover:text-blue-400 transition-colors">Galerija</a></li>
+                        <li><a href="index.html#prednosti" class="text-gray-400 hover:text-blue-400 transition-colors">Zašto mi</a></li>
+                        <li><a href="index.html#kontakt" class="text-gray-400 hover:text-blue-400 transition-colors">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white mb-4">Usluge</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#usluge" class="text-gray-400 hover:text-blue-400 transition-colors">Profesionalno Farbanje</a></li>
+                        <li><a href="index.html#usluge" class="text-gray-400 hover:text-blue-400 transition-colors">Limarski Radovi</a></li>
+                        <li><a href="index.html#usluge" class="text-gray-400 hover:text-blue-400 transition-colors">Sanacija Štete</a></li>
+                        <li><a href="index.html#usluge" class="text-gray-400 hover:text-blue-400 transition-colors">Poliranje</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-500 text-sm">© 2026 Auto Paint Centar™. Sva prava zadržana.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/381628388856" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-transform hover:scale-110 z-50 flex items-center justify-center" title="Kontaktirajte nas putem WhatsApp">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+    </a>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let isMenuOpen = false;
+
+        mobileMenuBtn?.addEventListener('click', e => {
+            e.stopPropagation();
+            isMenuOpen = !isMenuOpen;
+            mobileMenu.classList.toggle('hidden', !isMenuOpen);
+            mobileMenuBtn.innerHTML = isMenuOpen 
+                ? '<i data-lucide="x" class="w-8 h-8 text-blue-400"></i>'
+                : '<i data-lucide="menu" class="w-8 h-8"></i>';
+            lucide.createIcons();
+        });
+
+        document.addEventListener('click', e => {
+            if (isMenuOpen && !mobileMenu?.contains(e.target) && !mobileMenuBtn?.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+                lucide.createIcons();
+                isMenuOpen = false;
+            }
+        });
+
+        // Lightbox functions
+        function openLightbox(el) {
+            const img   = el.querySelector('img');
+            const video = el.querySelector('video');
+            const lb    = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lightbox-img');
+            const lbVid = document.getElementById('lightbox-video');
+
+            lbImg.classList.add('hidden');
+            lbVid.classList.add('hidden');
+            lbVid.pause();
+            lbVid.src = '';
+
+            if (img) {
+                lbImg.src = img.src;
+                lbImg.classList.remove('hidden');
+            }
+            else if (video) {
+                const src = video.querySelector('source')?.src;
+                if (src) {
+                    lbVid.src = src;
+                    lbVid.load();
+                    lbVid.play().catch(() => {});
+
+                    // Bonus: pokušaj fullscreen na mobilnom za video
+                    if (lbVid.requestFullscreen && /Mobi|Android/i.test(navigator.userAgent)) {
+                        lbVid.requestFullscreen().catch(() => {});
+                    }
+
+                    lbVid.classList.remove('hidden');
+                }
+            }
+
+            lb.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            const vid = document.getElementById('lightbox-video');
+            lb.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            vid.pause();
+            vid.src = '';
+            if (document.fullscreenElement) {
+                document.exitFullscreen().catch(() => {});
+            }
+        }
+
+        // Zatvaranje klikom na pozadinu (radi i na telefonu)
+        document.getElementById('lightbox').addEventListener('click', e => {
+            if (e.target === document.getElementById('lightbox')) {
+                closeLightbox();
+            }
+        });
+
+        // Escape taster
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Delegacija klikova na galerijske stavke
+        document.getElementById('gallery-grid').addEventListener('click', e => {
+            const item = e.target.closest('.gallery-item');
+            if (item) openLightbox(item);
+        });
+
+        // GSAP animacija ulaska
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo('.gallery-item', 
+            { opacity: 0, y: 30 },
+            {
+                scrollTrigger: { trigger: '#gallery-grid', start: 'top 85%' },
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: 'power2.out'
+            }
+        );
+    </script>
+</body>
+</html>

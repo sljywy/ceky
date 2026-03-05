@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Auto Paint Centar - Profesionalni auto limarski i lakirerski radovi u Kulpinu. Kompletna popravka karoserije, farbanje vozila i sanacija oštećenja nakon nezgoda.">
+        content="Auto Paint Centar - Profesionalni auto limarski i lakirerski radovi u Opština Bački Petrovac (Kulpin). Kompletna popravka karoserije, farbanje vozila i sanacija oštećenja nakon nezgoda.">
     <meta name="keywords"
-        content="auto farbanje, limarski radovi, popravka karoserije, Kulpin, auto lakiranje, sanacija štete">
+        content="auto farbanje, limarski radovi, popravka karoserije, Opština Bački Petrovac (Kulpin), auto lakiranje, sanacija štete">
     <title>Auto Paint Centar | Profesionalno Farbanje i Limarski Radovi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" href="favicon.png" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap"
@@ -36,7 +36,7 @@
         }
 
         .hero-bg {
-            background: linear-gradient(rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.8)), url('4a.jpg');
+            background: linear-gradient(rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.8)), url('galerija/background.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -61,15 +61,8 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .shine-effect {
@@ -99,6 +92,82 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
+        .gradient-glow {
+            background: linear-gradient(90deg, #fbbf24, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow:
+                0 0 15px rgba(245, 158, 11, 0.8),
+                0 0 30px rgba(217, 119, 6, 0.5);
+            font-weight: 800;
+        }
+
+        .social-icon {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-4px) scale(1.15);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+
+        /* ────────────────────────────────────────────── */
+        /*           CAROUSEL STILOVI (About sekcija)     */
+        /* ────────────────────────────────────────────── */
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .carousel img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .carousel img.active {
+            opacity: 1;
+        }
+
+        .carousel:hover img {
+            animation-play-state: paused;
+        }
+
+        @keyframes fadeInOut {
+            0%   { opacity: 0; }
+            10%  { opacity: 1; }
+            25%  { opacity: 1; }
+            35%  { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        .carousel img:nth-child(1) { animation: fadeInOut 16s infinite; }
+        .carousel img:nth-child(2) { animation: fadeInOut 16s infinite 4s; }
+        .carousel img:nth-child(3) { animation: fadeInOut 16s infinite 8s; }
+        .carousel img:nth-child(4) { animation: fadeInOut 16s infinite 12s; }
+
+        /* Za mobilne uređaje možemo smanjiti visinu ako treba */
+        @media (max-width: 768px) {
+            .carousel {
+                height: 320px;
+            }
+        }
     </style>
 </head>
 
@@ -109,26 +178,20 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-3">
-                    <img src="logo.png" alt="Auto Paint Centar Logo" class="h-32 w-auto object-contain rounded">
-                    <span class="font-display text-xl font-bold text-white tracking-wide">AUTO PAINT <span
-                            class="text-blue-600">CENTAR</span></span>
+                    <img src="logo/logo.png" alt="Auto Paint Centar Logo" class="h-32 w-auto object-contain rounded">
+                    <span class="font-display text-2xl md:text-3xl font-black bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent tracking-tight"
+                        style="text-shadow: 0 0 16px rgba(245, 158, 11, 0.8), 0 0 32px rgba(245, 158, 11, 0.6), 0 0 48px rgba(217, 119, 6, 0.4);">
+                        AUTO PAINT CENTAR
+                    </span>
                 </div>
 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#pocetna"
-                        class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">Početna</a>
-                    <a href="#onama"
-                        class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">O
-                        nama</a>
-                    <a href="#usluge"
-                        class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">Usluge</a>
-                    <a href="galerija.html"
-                        class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">Galerija</a>
-                    <a href="#prednosti"
-                        class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">Zašto
-                        mi</a>
-                    <a href="#kontakt"
-                        class="bg-blue-600 hover:bg-blue-700 px-6 py-2.5 rounded-full font-semibold text-sm transition-all transform hover:scale-105 shadow-lg shadow-blue-600/30">Kontakt</a>
+                    <a href="#pocetna" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">Početna</a>
+                    <a href="#onama" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">O nama</a>
+                    <a href="#usluge" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">Usluge</a>
+                    <a href="galerija.html" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">Galerija</a>
+                    <a href="#prednosti" class="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium uppercase tracking-wider">Zašto mi</a>
+                    <a href="#kontakt" class="bg-blue-600 hover:bg-blue-700 px-6 py-2.5 rounded-full font-semibold text-sm transition-all transform hover:scale-105 shadow-lg shadow-blue-600/30">Kontakt</a>
                 </div>
 
                 <button class="md:hidden text-gray-300 hover:text-white" id="mobile-menu-btn">
@@ -140,16 +203,11 @@
         <!-- Mobile Menu -->
         <div class="md:hidden hidden bg-slate-900 border-t border-gray-800" id="mobile-menu">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#pocetna"
-                    class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">Početna</a>
-                <a href="#onama"
-                    class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">O nama</a>
-                <a href="#usluge"
-                    class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">Usluge</a>
-                <a href="galerija.html"
-                    class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">Galerija</a>
-                <a href="#prednosti"
-                    class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">Zašto mi</a>
+                <a href="#pocetna" class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">Početna</a>
+                <a href="#onama" class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">O nama</a>
+                <a href="#usluge" class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">Usluge</a>
+                <a href="galerija.html" class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">Galerija</a>
+                <a href="#prednosti" class="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800 rounded-md">Zašto mi</a>
                 <a href="#kontakt" class="block px-3 py-2 text-blue-400 font-semibold">Kontakt</a>
             </div>
         </div>
@@ -157,14 +215,11 @@
 
     <!-- Hero Section -->
     <section id="pocetna" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div
-            class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20">
-        </div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <div class="animate-float mb-8 inline-block">
-                <div
-                    class="w-24 h-24 mx-auto bg-gradient-to-br from-blue-600/20 to-amber-600/20 rounded-full flex items-center justify-center border border-blue-600/30">
+            <div class="animate-float mb-8 inline-block mt-16 sm:mt-20 md:mt-24 lg:mt-32">
+                <div class="w-24 h-24 mx-auto bg-gradient-to-br from-blue-600/20 to-amber-600/20 rounded-full flex items-center justify-center border border-blue-600/30">
                     <i data-lucide="paintbrush" class="w-12 h-12 text-blue-600"></i>
                 </div>
             </div>
@@ -175,9 +230,8 @@
             </h1>
 
             <p class="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 max-w-3xl mx-auto font-light">
-                Evropski standardi kvaliteta u <span class="text-blue-400 font-semibold">Kulpinu</span><br>
-                <span class="text-lg md:text-xl text-gray-400">Profesionalno farbanje i limarski radovi sa preko 20
-                    godina iskustva</span>
+                Evropski standardi kvaliteta u <span class="text-blue-400 font-semibold">Opština Bački Petrovac (Kulpin)</span><br>
+                <span class="text-lg md:text-xl text-gray-400">Profesionalno farbanje i limarski radovi sa preko 20 godina iskustva</span>
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
@@ -225,17 +279,25 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="relative">
-                    <div
-                        class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-amber-600 rounded-2xl opacity-20 blur-2xl">
-                    </div>
-                    <div class="relative bg-gray-800 rounded-2xl overflow-hidden shadow-2xl">
-                        <img src="3a.jpg" alt="Auto Paint Centar Radionica"
-                            class="w-full h-[400px] transform hover:scale-105 transition-transform duration-700">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-amber-600 rounded-2xl opacity-20 blur-2xl"></div>
+                    
+                    <div class="carousel-container relative bg-gray-800 shadow-2xl">
+                        <div class="carousel">
+                            <img src="galerija/Farbanje/1.jpg" alt="Farbarska kabina - Auto Paint Centar" 
+                                 class="active" loading="eager">
 
+                            <img src="galerija/Limarija/3.jpg" alt="Profesionalno farbanje panela" 
+                                 loading="lazy">
+
+                            <img src="galerija/Poliranje/2.jpg" alt="Vozilo na dizalici - limarski radovi" 
+                                 loading="lazy">
+
+                            <img src="galerija/Pranje/10.jpg" alt="Sveže ofarbani i polirani deo" 
+                                 loading="lazy">
+                        </div>
                     </div>
-                    >
-                    <div
-                        class="absolute -bottom-6 -right-6 bg-gray-800 p-6 rounded-xl shadow-xl border border-gray-700 hidden md:block">
+
+                    <div class="absolute -bottom-6 -right-6 bg-gray-800 p-6 rounded-xl shadow-xl border border-gray-700 hidden md:block">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 bg-blue-600/20 rounded-full flex items-center justify-center">
                                 <i data-lucide="award" class="w-6 h-6 text-blue-600"></i>
@@ -249,9 +311,7 @@
                 </div>
 
                 <div>
-                    >
-                    <div
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-400 text-sm font-semibold mb-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-400 text-sm font-semibold mb-6">
                         <i data-lucide="info" class="w-4 h-4"></i>
                         O Nama
                     </div>
@@ -272,8 +332,7 @@
 
                     <div class="grid sm:grid-cols-2 gap-6">
                         <div class="flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="check-circle" class="w-5 h-5 text-blue-600"></i>
                             </div>
                             <div>
@@ -282,8 +341,7 @@
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="clock" class="w-5 h-5 text-blue-600"></i>
                             </div>
                             <div>
@@ -292,8 +350,7 @@
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="shield-check" class="w-5 h-5 text-blue-600"></i>
                             </div>
                             <div>
@@ -302,8 +359,7 @@
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div
-                                class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div class="w-10 h-10 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="heart" class="w-5 h-5 text-blue-600"></i>
                             </div>
                             <div>
@@ -319,13 +375,10 @@
 
     <!-- Services Section -->
     <section id="usluge" class="py-24 bg-slate-950 relative overflow-hidden">
-        <div
-            class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-slate-950 to-slate-950">
-        </div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/10 via-slate-950 to-slate-950"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="text-center mb-16">
-                <div
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-400 text-sm font-semibold mb-6">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-400 text-sm font-semibold mb-6">
                     <i data-lucide="settings" class="w-4 h-4"></i>
                     Naše Usluge
                 </div>
@@ -340,162 +393,87 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service 1 -->
                 <div class="service-card bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 group">
-                    <div
-                        class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/30">
+                    <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/30">
                         <i data-lucide="spray-can" class="w-7 h-7 text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">Profesionalno Farbanje</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">Kompletno i delimično farbanje vozila uz korišćenje
-                        premium boja i lakova. Vraćamo fabrički izgled, dubinu boje i visok sjaj Vašem automobilu.</p>
+                    <p class="text-gray-400 leading-relaxed mb-4">Kompletno i delimično farbanje vozila uz korišćenje premium boja i lakova. Vraćamo fabrički izgled, dubinu boje i visok sjaj Vašem automobilu.</p>
                     <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Kompletno farbanje vozila
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Parcijalno farbanje (paneli, branici, vrata)
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Podešavanje i uklapanje nijansi
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Poliranje i zaštita laka
-                        </li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Kompletno farbanje vozila</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Parcijalno farbanje (paneli, branici, vrata)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Podešavanje i uklapanje nijansi</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Poliranje i zaštita laka</li>
                     </ul>
                 </div>
 
                 <!-- Service 2 -->
                 <div class="service-card bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 group">
-                    <div
-                        class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/30">
+                    <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/30">
                         <i data-lucide="hammer" class="w-7 h-7 text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">Auto Limarija</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">Precizno ispravljanje i popravka oštećenja na
-                        karoseriji uz maksimalnu tačnost i kvalitet završne obrade.</p>
+                    <p class="text-gray-400 leading-relaxed mb-4">Precizno ispravljanje i popravka oštećenja na karoseriji uz maksimalnu tačnost i kvalitet završne obrade.</p>
                     <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Ispravljanje vrata, haube i blatobrana
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Uklanjanje udubljenja
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Zamena i uklapanje delova karoserije
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Zavarivanje i spajanje
-                        </li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Ispravljanje vrata, haube i blatobrana</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Uklanjanje udubljenja</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Zamena i uklapanje delova karoserije</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Zavarivanje i spajanje</li>
                     </ul>
                 </div>
 
                 <!-- Service 3 -->
                 <div class="service-card bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 group">
-                    <div
-                        class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/30">
+                    <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/30">
                         <i data-lucide="wrench" class="w-7 h-7 text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">Sanacija Štete i Popravka Karoserije</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">Kompletna rekonstrukcija vozila nakon saobraćajnih
-                        nezgoda. Vraćamo strukturu i sigurnost vozila u fabričko stanje.</p>
+                    <p class="text-gray-400 leading-relaxed mb-4">Kompletna rekonstrukcija vozila nakon saobraćajnih nezgoda. Vraćamo strukturu i sigurnost vozila u fabričko stanje.</p>
                     <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Procena oštećenja
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Zamena panela
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Anti-koroziona zaštita
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Kompletna rekonstrukcija
-                        </li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Procena oštećenja</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Zamena panela</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Anti-koroziona zaštita</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Kompletna rekonstrukcija</li>
                     </ul>
                 </div>
+
                 <!-- Service 4 -->
                 <div class="service-card bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 group">
-                    <div
-                        class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/30">
+                    <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/30">
                         <i data-lucide="sparkles" class="w-7 h-7 text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">Poliranje i Detailing</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">Detaljno čišćenje i zaštita vozila nakon radova ili
-                        kao posebna usluga.</p>
+                    <p class="text-gray-400 leading-relaxed mb-4">Detaljno čišćenje i zaštita vozila nakon radova ili kao posebna usluga.</p>
                     <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Dubinsko pranje enterijera
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Dubinsko čišćenje
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Poliranje laka
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Keramička zaštita
-                        </li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Dubinsko pranje enterijera</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Dubinsko čišćenje</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Poliranje laka</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Keramička zaštita</li>
                     </ul>
                 </div>
-
 
                 <!-- Service 5 -->
                 <div class="service-card bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 group">
-                    <div
-                        class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/30">
+                    <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/30">
                         <i data-lucide="truck" class="w-7 h-7 text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">Izlazak na Teren</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">Dolazimo do Vas! Vršimo procenu štete na licu mesta i
-                        organizujemo prevoz vozila.</p>
+                    <p class="text-gray-400 leading-relaxed mb-4">Dolazimo do Vas! Vršimo procenu štete na licu mesta i organizujemo prevoz vozila.</p>
                     <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Besplatna procena
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Prevoz vozila
-                        </li>
-
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Besplatna procena</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Prevoz vozila</li>
                     </ul>
                 </div>
 
-
-
                 <!-- Service 6 -->
                 <div class="service-card bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 group">
-                    <div
-                        class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/30">
+                    <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-600/30">
                         <i data-lucide="file-text" class="w-7 h-7 text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">Pomoć sa Osiguravajućim Kućama</h3>
-                    <p class="text-gray-400 leading-relaxed mb-4">Saradnja sa svim osiguravajućim kućama. Pomoć pri
-                        rešavanju šteta i dokumentaciji.</p>
+                    <p class="text-gray-400 leading-relaxed mb-4">Saradnja sa svim osiguravajućim kućama. Pomoć pri rešavanju šteta i dokumentaciji.</p>
                     <ul class="space-y-2 text-sm text-gray-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Kompletna dokumentacija
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-600"></i>
-                            Brza rešenja
-                        </li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Kompletna dokumentacija</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-600"></i> Brza rešenja</li>
                     </ul>
                 </div>
             </div>
@@ -506,8 +484,7 @@
     <section id="prednosti" class="py-24 bg-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <div
-                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-400 text-sm font-semibold mb-6">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-400 text-sm font-semibold mb-6">
                     <i data-lucide="star" class="w-4 h-4"></i>
                     Zašto Izabrati Nas
                 </div>
@@ -518,8 +495,7 @@
 
             <div class="grid lg:grid-cols-1 gap-8">
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div
-                        class="bg-gray-800/30 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+                    <div class="bg-gray-800/30 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
                         <div class="flex items-center gap-4 mb-4">
                             <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center">
                                 <i data-lucide="truck" class="w-6 h-6 text-blue-600"></i>
@@ -529,32 +505,27 @@
                         <p class="text-gray-400">Preuzimamo i vraćamo Vaše vozilo brzo, sigurno i bez komplikacija.</p>
                     </div>
 
-                    <div
-                        class="bg-gray-800/30 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+                    <div class="bg-gray-800/30 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
                         <div class="flex items-center gap-4 mb-4">
                             <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center">
                                 <i data-lucide="badge-check" class="w-6 h-6 text-blue-600"></i>
                             </div>
                             <h3 class="font-bold text-white text-lg">Sertifikovani Majstori</h3>
                         </div>
-                        <p class="text-gray-400">Naš tim čine iskusni majstori sa višedecenijskim iskustvom u auto
-                            industriji.</p>
+                        <p class="text-gray-400">Naš tim čine iskusni majstori sa višedecenijskim iskustvom u auto industriji.</p>
                     </div>
 
-                    <div
-                        class="bg-gray-800/30 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+                    <div class="bg-gray-800/30 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
                         <div class="flex items-center gap-4 mb-4">
                             <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center">
                                 <i data-lucide="gauge" class="w-6 h-6 text-blue-600"></i>
                             </div>
                             <h3 class="font-bold text-white text-lg">Savremena Oprema</h3>
                         </div>
-                        <p class="text-gray-400">Radimo sa najmodernijom tehnologijom i alatima za lasersko merenje i
-                            farbanje.</p>
+                        <p class="text-gray-400">Radimo sa najmodernijom tehnologijom i alatima za lasersko merenje i farbanje.</p>
                     </div>
 
-                    <div
-                        class="bg-gray-800/30 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
+                    <div class="bg-gray-800/30 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-colors">
                         <div class="flex items-center gap-4 mb-4">
                             <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center">
                                 <i data-lucide="hand-coins" class="w-6 h-6 text-blue-600"></i>
@@ -564,8 +535,6 @@
                         <p class="text-gray-400">Nudimo pošten odnos cene i kvaliteta, bez neprijatnih iznenađenja.</p>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -582,44 +551,34 @@
 
             <div class="grid md:grid-cols-4 gap-8">
                 <div class="relative text-center group">
-                    <div
-                        class="w-20 h-20 mx-auto bg-gray-800 border-2 border-blue-600 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors duration-300">
+                    <div class="w-20 h-20 mx-auto bg-gray-800 border-2 border-blue-600 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors duration-300">
                         <span class="text-2xl font-bold text-white">01</span>
                     </div>
                     <h3 class="font-bold text-white text-lg mb-2">Kontakt</h3>
                     <p class="text-gray-400 text-sm">Kontaktirajte nas. Dolazimo na teren po potrebi.</p>
-                    <div
-                        class="hidden md:block absolute top-10 left-[60%] w-full h-0.5 bg-gradient-to-r from-blue-600 to-transparent">
-                    </div>
+                    <div class="hidden md:block absolute top-10 left-[60%] w-full h-0.5 bg-gradient-to-r from-blue-600 to-transparent"></div>
                 </div>
 
                 <div class="relative text-center group">
-                    <div
-                        class="w-20 h-20 mx-auto bg-gray-800 border-2 border-cyan-600 rounded-full flex items-center justify-center mb-4 group-hover:bg-cyan-600 transition-colors duration-300">
+                    <div class="w-20 h-20 mx-auto bg-gray-800 border-2 border-cyan-600 rounded-full flex items-center justify-center mb-4 group-hover:bg-cyan-600 transition-colors duration-300">
                         <span class="text-2xl font-bold text-white">02</span>
                     </div>
                     <h3 class="font-bold text-white text-lg mb-2">Procena</h3>
                     <p class="text-gray-400 text-sm">Detaljna procena oštećenja i izrada ponude sa rokovima.</p>
-                    <div
-                        class="hidden md:block absolute top-10 left-[60%] w-full h-0.5 bg-gradient-to-r from-cyan-600 to-transparent">
-                    </div>
+                    <div class="hidden md:block absolute top-10 left-[60%] w-full h-0.5 bg-gradient-to-r from-cyan-600 to-transparent"></div>
                 </div>
 
                 <div class="relative text-center group">
-                    <div
-                        class="w-20 h-20 mx-auto bg-gray-800 border-2 border-amber-500 rounded-full flex items-center justify-center mb-4 group-hover:bg-amber-500 transition-colors duration-300">
+                    <div class="w-20 h-20 mx-auto bg-gray-800 border-2 border-amber-500 rounded-full flex items-center justify-center mb-4 group-hover:bg-amber-500 transition-colors duration-300">
                         <span class="text-2xl font-bold text-white">03</span>
                     </div>
                     <h3 class="font-bold text-white text-lg mb-2">Izrada</h3>
                     <p class="text-gray-400 text-sm">Profesionalna popravka korišćenjem kvalitetnih materijala.</p>
-                    <div
-                        class="hidden md:block absolute top-10 left-[60%] w-full h-0.5 bg-gradient-to-r from-amber-500 to-transparent">
-                    </div>
+                    <div class="hidden md:block absolute top-10 left-[60%] w-full h-0.5 bg-gradient-to-r from-amber-500 to-transparent"></div>
                 </div>
 
                 <div class="text-center group">
-                    <div
-                        class="w-20 h-20 mx-auto bg-gray-800 border-2 border-green-500 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-500 transition-colors duration-300">
+                    <div class="w-20 h-20 mx-auto bg-gray-800 border-2 border-green-500 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-500 transition-colors duration-300">
                         <span class="text-2xl font-bold text-white">04</span>
                     </div>
                     <h3 class="font-bold text-white text-lg mb-2">Preuzimanje</h3>
@@ -631,14 +590,11 @@
 
     <!-- Contact Section -->
     <section id="kontakt" class="py-24 bg-slate-900 relative">
-        <div
-            class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-900 to-slate-900">
-        </div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-900 to-slate-900"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="grid lg:grid-cols-1 gap-16 max-w-2xl mx-auto">
                 <div>
-                    <div
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-400 text-sm font-semibold mb-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-400 text-sm font-semibold mb-6">
                         <i data-lucide="message-circle" class="w-4 h-4"></i>
                         Kontaktirajte Nas
                     </div>
@@ -646,49 +602,42 @@
                         Tu Smo <span class="gradient-text">Za Vas</span>
                     </h2>
                     <p class="text-gray-400 text-lg mb-8">
-                        Ako Vam je potreban pouzdan auto limar i profesionalno farbanje u Kulpinu – Auto Paint Centar je
-                        pravo mesto za Vas. Hvala Vam na poverenju!
+                        Ako Vam je potreban pouzdan auto limar i profesionalno farbanje u Opština Bački Petrovac (Kulpin) – Auto Paint Centar je pravo mesto za Vas. Hvala Vam na poverenju!
                     </p>
 
                     <div class="space-y-6">
                         <div class="flex items-start gap-4 group">
-                            <div
-                                class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600/20 transition-colors">
+                            <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600/20 transition-colors">
                                 <i data-lucide="map-pin" class="w-6 h-6 text-blue-600"></i>
                             </div>
                             <div>
                                 <h4 class="font-semibold text-white mb-1">Adresa</h4>
-                                <p class="text-gray-400">Triglavska 3<br>Kulpin, Srbija</p>
+                                <p class="text-gray-400">Triglavska 3<br>Opština Bački Petrovac (Kulpin), Srbija</p>
                             </div>
                         </div>
 
                         <div class="flex items-start gap-4 group">
-                            <div
-                                class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600/20 transition-colors">
+                            <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600/20 transition-colors">
                                 <i data-lucide="phone" class="w-6 h-6 text-blue-600"></i>
                             </div>
                             <div>
                                 <h4 class="font-semibold text-white mb-1">Telefon</h4>
-                                <a href="tel:+381628388856" class="text-gray-400">+381 62 838 88 56
-                                </a>
+                                <a href="tel:+381628388856" class="text-gray-400">+381 62 838 88 56</a><br>
+                                <a href="tel:+637124125" class="text-gray-400">+381 63 712 41 25</a>
                             </div>
                         </div>
 
                         <div class="flex items-start gap-4 group">
-                            <div
-                                class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600/20 transition-colors">
+                            <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600/20 transition-colors">
                                 <i data-lucide="clock" class="w-6 h-6 text-blue-600"></i>
                             </div>
                             <div>
                                 <h4 class="font-semibold text-white mb-1">Radno Vreme</h4>
-                                <p class="text-gray-400">Pon - Pet: 08:00 - 16:00</p>
+                                <p class="text-gray-400">Pon - Pet: 08:00 - 17:00</p>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
             <!-- Embedded Google Maps -->
@@ -709,9 +658,9 @@
             <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <div class="col-span-2">
                     <div class="flex items-center gap-3 mb-4">
-
-                        <span class="font-display text-xl font-bold text-white">Zapratite nas <span
-                                class="text-blue-600 px-2 text-3xl">⬇</span></span>
+                        <p class="font-display text-2xl font-bold tracking-wide mb-4 flex items-center gap-8">
+                            <span class="gradient-text">Zapratite nas</span>
+                        </p>
                     </div>
 
                     <div class="flex gap-4">
@@ -719,14 +668,13 @@
                             class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-[#1877F2] hover:text-white transition-colors"
                             aria-label="Facebook">
                             <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
 
-                        
                         <a href="https://www.tiktok.com/@jan.cerovski2?_r=1&_t=ZS-94O13DTHcAc" target="_blank"
                             class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-black hover:text-white transition-colors"
                             aria-label="TikTok">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                             </svg>
                         </a>
                     </div>
@@ -736,16 +684,10 @@
                     <h4 class="font-bold text-white mb-4">Brzi Linkovi</h4>
                     <ul class="space-y-2">
                         <li><a href="#onama" class="text-gray-400 hover:text-blue-400 transition-colors">O nama</a></li>
-                        <li><a href="#usluge" class="text-gray-400 hover:text-blue-400 transition-colors">Usluge</a>
-                        </li>
-                        <li><a href="galerija.html"
-                                class="text-gray-400 hover:text-blue-400 transition-colors">Galerija</a>
-                        </li>
-                        <li><a href="#prednosti" class="text-gray-400 hover:text-blue-400 transition-colors">Zašto
-                                mi</a></li>
-
-                        <li><a href="#kontakt" class="text-gray-400 hover:text-blue-400 transition-colors">Kontakt</a>
-                        </li>
+                        <li><a href="#usluge" class="text-gray-400 hover:text-blue-400 transition-colors">Usluge</a></li>
+                        <li><a href="galerija.html" class="text-gray-400 hover:text-blue-400 transition-colors">Galerija</a></li>
+                        <li><a href="#prednosti" class="text-gray-400 hover:text-blue-400 transition-colors">Zašto mi</a></li>
+                        <li><a href="#kontakt" class="text-gray-400 hover:text-blue-400 transition-colors">Kontakt</a></li>
                     </ul>
                 </div>
 
@@ -776,5 +718,4 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>
 </body>
-
-</html>
+</html> 
